@@ -5,7 +5,7 @@ import InterviewerListItem from "./InterviewerListItem";
 //PROPS - interviewers is array of obj, setinterviewer accepts ID and comes from interviewlistitem, and interviewer is number that represents the id
 
 export default function InterviewerList(props) {
-  const {interviewers, setInterviewer, interviewer} = props;
+  const {interviewers, onChange, value} = props;
 
   const mappedInt = interviewers.map((item) => {
     return (
@@ -13,8 +13,8 @@ export default function InterviewerList(props) {
       key={item.id}
       name={item.name}
       avatar={item.avatar}
-      selected={item.id === interviewer}
-      setInterviewer={() => setInterviewer(item.id)}
+      selected={item.id === value}
+      setInterviewer={() => onChange(item.id)}
       />
     );
   });
