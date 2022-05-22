@@ -3,6 +3,7 @@ import axios from "axios";
 import "components/Application.scss";
 import DayList from "./DayList";
 import Appointment from "components/Appointment";
+import { getAppointmentsForDay } from "helpers/selectors";
 
 export default function Application(props) {
   const [state, setState] = useState({
@@ -10,17 +11,14 @@ export default function Application(props) {
     days: [], 
     appointments: {}
   });
-
-  const dailyAppointments = [];
-
-  // setState({...state, day: "Tuesday"}); was this just an example? tf
-
+  
   const setDay = day => setState({ ...state, day });
-  // const setDays = days => setState(prev => ({ ...prev, days }));
+
+  const dailyAppointments = getAppointmentsForDay(state, state.day);
 
   useEffect (() => {
     Promise.all([
-    axios.get("api/days"), //need help here, wont work with just /api/days
+    axios.get("api/days"), 
     axios.get("api/appointments"),
     // axios.get("api/interviewers")
   ])
