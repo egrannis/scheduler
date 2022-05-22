@@ -1,5 +1,5 @@
 
-export function getAppointmentsForDay(state,day) {
+export function getAppointmentsForDay(state, day) {
   let result = [];
   const singleDay = state.days.filter(_day => _day.name === day); /// id 1, name monday, appointments: []...
 
@@ -14,6 +14,24 @@ export function getAppointmentsForDay(state,day) {
 return result;
 };
 
+/**
+ * 
+ * @param {{days: [], appointments: {}, interviewers: {}}} state 
+ * @param {{student: "", interviewer: number}} interview 
+ * @returns {student: "", interviewer: {}}
+ */
+export function getInterview(state, interview) {
+  let result = null;
+  if (interview) {
+    const interviewerId = interview.interviewer;
+    const indivInterview = state.interviewers[interviewerId]; // object 
+    result = { 
+      student: interview.student,
+      interviewer: indivInterview, 
+    }
+  }
+return result;
+};
 
 // Second way to more efficiently write getAppointmentsForDay
 //  export function getAppointmentsForDay(state, day) {

@@ -1,14 +1,16 @@
 import React from "react";
 import DayListItem from "./DayListItem";
 
+//key={index}
+// (d, index)
 
 export default function DayList(props) {
   const {days, value, onChange} = props; // destructuring our properties before addressing mapped function
 
-  const mapped = days.map((d, index) => {
+  const mapped = days.map((d) => {
     return (
       <DayListItem
-      key={index}
+      key={d.id}
       name={d.name}
       spots={d.spots}
       selected={value === d.name}
