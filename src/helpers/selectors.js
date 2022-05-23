@@ -33,6 +33,22 @@ export function getInterview(state, interview) {
 return result;
 };
 
+
+export function getInterviewersForDay(state, day) {
+  let result = [];
+  const singleDay = state.days.filter(_day => _day.name === day); /// id 1, name monday, appointments: []... If there are no days then it just gives an empty array
+
+  if (singleDay.length > 0) {
+    const appArr = singleDay[0].interviewers; // array like [1.2,3]
+    for (const item of appArr) {
+      if (state.interviewers[item]) {
+        result.push(state.interviewers[item]);
+      }
+    }
+  }
+return result;
+};
+
 // Second way to more efficiently write getAppointmentsForDay
 //  export function getAppointmentsForDay(state, day) {
 //   const dayMatch = state.days
