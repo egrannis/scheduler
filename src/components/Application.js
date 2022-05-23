@@ -29,8 +29,6 @@ export default function Application(props) {
     });
   }, []);
 
-  // console.log('State.interviewers: ', state.interviewers);
-
   return (
     <main className="layout">
       <section className="sidebar">
@@ -61,7 +59,7 @@ export default function Application(props) {
               key={appointment.id}
               id={appointment.id}
               time={appointment.time}
-              interview={interview}
+              interview={appointment.interview}
             />
           );
         })
