@@ -49,6 +49,8 @@ export function getInterviewersForDay(state, day) {
 return result;
 };
 
+
+
 // Second way to more efficiently write getAppointmentsForDay
 //  export function getAppointmentsForDay(state, day) {
 //   const dayMatch = state.days
