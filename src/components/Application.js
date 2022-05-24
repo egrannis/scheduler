@@ -39,7 +39,7 @@ export default function Application(props) {
       .then(() => {
         setState(newState)
       })
-      .catch((err) => console.log('error:', err));
+      // .catch((err) => console.log('error:', err));
   }
 
   function cancelInterview(id) {
@@ -61,7 +61,7 @@ export default function Application(props) {
     .then (() => {
       setState(newState);
     })
-    .catch((err) => console.log('error', err));
+    // .catch((err) => console.log('error', err));
   }
 
   useEffect (() => {
