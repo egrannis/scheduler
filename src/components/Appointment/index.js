@@ -55,6 +55,7 @@ export default function Appointment(props) {
       {mode === SHOW && (
         <Show
           student={props.interview.student}
+          id={props.id}
           interviewer={props.interview.interviewer}
           onDelete={() => transition(CONFIRM)}
           onEdit={() => transition(EDIT)}
