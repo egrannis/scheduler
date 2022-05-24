@@ -11,6 +11,7 @@ export default function useVisualMode(initial) {
       return setMode(next);
     }
     history.push(next);
+    console.log(history);
     return setMode(next);
   }
 
