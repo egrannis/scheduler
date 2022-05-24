@@ -28,15 +28,40 @@ export default function Application(props) {
       ...state.appointments,
       [id]: appointment
     };
+
+    const newState = {
+      ...state, 
+      appointments: appointments // overrides appointments in line 37
+    };
     
     return axios 
       .put(`api/appointments/${id}`, appointment)
       .then(() => {
-        // console.log(res);
-        setState({...state, appointments
-        })
+        setState(newState)
       })
       .catch((err) => console.log('error:', err));
+  }
+
+  function cancelInterview(id) {
+    const newAppointment = {
+      ...state.appointments[id], // copies all the old values for that one appointment
+      interview: null // replace the current value of the interview key with the new value
+    };
+    const newAppointments = {
+      ...state.appointments,
+      [id]: newAppointment // replace the old appointmnet at this ID with the updated version coming in (line 46-49)
+    };
+    const newState = {
+      ...state,
+      appointments: newAppointments // refer to const state, setstate on line 8 for reference about valid keys
+    }
+
+    return axios
+    .delete(`api/appointments/${id}`)
+    .then (() => {
+      setState(newState);
+    })
+    .catch((err) => console.log('error', err));
   }
 
   useEffect (() => {
@@ -84,6 +109,7 @@ export default function Application(props) {
               interview={appointment.interview}
               interviewers={dailyInterviewers}
               bookInterview={bookInterview}
+              cancelInterview={cancelInterview}
             />
           );
         })
