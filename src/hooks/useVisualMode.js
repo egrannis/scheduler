@@ -1,4 +1,5 @@
-import react, { useState } from "react";
+import { useState } from "react";
+// need to fix how I'm doing this function, need to use setHistory
 
 export default function useVisualMode(initial) {
   const [mode, setMode] = useState(initial);
