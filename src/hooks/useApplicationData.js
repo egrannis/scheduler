@@ -11,7 +11,7 @@ export default function useApplicationData() {
 
   const setDay = day => setState({ ...state, day });
 
-  // Books a new interview by updating the database, then setting the new React state
+  // Books a new interview / edits an interview by updating the database, then setting the new React state
   function bookInterview(id, interview) {
     const appointment = {
       ...state.appointments[id],
@@ -30,8 +30,8 @@ export default function useApplicationData() {
           ...state,
           appointments,
           days: updateSpots(state, appointments, id)
-        })
-      })
+        });
+      });
   }
 
   // Cancels an interview by updating the database (setting interview to null) and then setting the new React state
@@ -53,7 +53,7 @@ export default function useApplicationData() {
           appointments: newAppointments,
           days: updateSpots(state, newAppointments, id)
         });
-      })
+      });
   }
 
   // Requests all necessary data from the API and adds it to the current state 
@@ -68,9 +68,8 @@ export default function useApplicationData() {
       });
   }, []);
 
-  // changes the value of spots when provided with state, updated appointments
-
-  const updateSpots = function (state, appointments, id) {
+  // Returns the new value of spots as a new days object. Calculates the new remaining spots and sets the spots value in the new days object
+  const updateSpots = function(state, appointments, id) {
     const currentDay = state.days.find((day) => day.name === state.day); // find current day
     const dayIndex = state.days.findIndex((day) => day.name === state.day); // find index of current day
     const appointmentIdsArray = currentDay.appointments; // access the appointment ids array for the current day

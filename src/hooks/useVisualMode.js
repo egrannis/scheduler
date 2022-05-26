@@ -1,5 +1,8 @@
 import { useState } from "react";
-// need to fix how I'm doing this function, need to use setHistory
+
+// Function that saves the mode history and sets the new mode
+// Includes transition function, which either replaces the current mode with the next one. If "replace" isn't passed as truthy, it saves a history of all modes
+// The back function takes the user back to the previous mode when they click a cancel button by accessing the previous mode
 
 export default function useVisualMode(initial) {
   const [mode, setMode] = useState(initial);
@@ -13,12 +16,12 @@ export default function useVisualMode(initial) {
   };
 
   function back() {
-    if (history.length === 1) { // if the length of our history is 1, that means that you can't go back further, so we just want to return that mode
+    if (history.length === 1) { // if the length of our history is 1, that means that you can't go back further, so simply return that mode
       return setHistory((prev) => prev);
     }
     setHistory((prev) => [...prev.slice(0, -1)]); // extracting what the history of modes was prior
   }
 
   return { mode: history[history.length - 1], transition, back }; // set the mode as the last item in the past history array + return the value
-  // returns object with keys mode transition back with values of mode state, transition function, + back function. Employing object shorthand notation for transition and back.
+  // returns object with keys mode, transition, + back. Employing object shorthand notation for transition and back and setting mode to the value of the last item in the history array.
 };
