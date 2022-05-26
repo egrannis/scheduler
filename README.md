@@ -1,4 +1,4 @@
-# Interview Scheduler
+# :calendar: Interview Scheduler :calendar: 
 The Interview Scheduler is single page application that acts as a simple interview appointment scheduling tool. Users are able to book, edit, and cancel interviews.
 
 This project was created using Create React App. A complete list of the technologies used to build this application can be seen below: 
