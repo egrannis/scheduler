@@ -24,7 +24,14 @@ This project was created using Create React App. A complete list of the technolo
 
 
 # Screenshots
+
 !["Enter a student name into the form and select an nterviewer"](https://github.com/egrannis/scheduler/blob/master/docs/Form-Entering-Student-Name-And-Saving.png?raw=true)
+
+!["View the newly created appointment"](https://github.com/egrannis/scheduler/blob/master/docs/Show-Newly-Created-Appointment.png?raw=true)
+
+!["Edit the image on hover"](https://github.com/egrannis/scheduler/blob/master/docs/Form-Edit-On-Hover.png?raw=true)
+
+!["Delete the appointment after clicking confirm"](https://github.com/egrannis/scheduler/blob/master/docs/Form-Delete-Appointment-Confirmation.png?raw=true)
 
 # Setup
 
