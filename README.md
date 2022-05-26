@@ -24,6 +24,7 @@ This project was created using Create React App. A complete list of the technolo
 
 
 # Screenshots
+!["Enter a student name into the form and select an nterviewer"](https://github.com/egrannis/scheduler/blob/master/docs/Form-Entering-Student-Name-And-Saving.png?raw=true)
 
 # Setup
 
