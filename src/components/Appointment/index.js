@@ -32,15 +32,15 @@ export default function Appointment(props) {
     };
     transition(SAVING);
     props.bookInterview(props.id, interview)
-    .then(() => transition(SHOW))
-    .catch(error => transition(ERROR_SAVE, true));
+      .then(() => transition(SHOW))
+      .catch(error => transition(ERROR_SAVE, true));
   }
 
   function destroy(event) {
     transition(DELETING, true);
     props.cancelInterview(props.id)
-    .then(() => transition(EMPTY))
-    .catch(error => transition(ERROR_DELETE, true));
+      .then(() => transition(EMPTY))
+      .catch(error => transition(ERROR_DELETE, true));
   }
 
   return (
@@ -61,12 +61,17 @@ export default function Appointment(props) {
           onEdit={() => transition(EDIT)}
         />
       )}
-      {mode === CONFIRM && <Confirm onConfirm={destroy} onCancel={back} message="Delete the appointment?"/>}
-      {mode === EDIT && <Form student={props.interview.student} interviewer={props.interview.interviewer.id} interviewers={props.interviewers} onSave={save} onCancel={back} />}
-      {mode === DELETING && <Status message="Deleting"/>}
+      {mode === CONFIRM && <Confirm onConfirm={destroy} onCancel={back} message="Delete the appointment?" />}
+      {mode === EDIT && <Form
+        student={props.interview.student}
+        interviewer={props.interview.interviewer.id}
+        interviewers={props.interviewers}
+        onSave={save}
+        onCancel={back}
+      />
+      }
+      {mode === DELETING && <Status message="Deleting" />}
       {mode === ERROR_DELETE && <Error message="Could not delete" onClose={back} />}
     </article>
   );
 }
-
-///{props.interview.interviewer}
